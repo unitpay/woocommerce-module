@@ -130,7 +130,7 @@ function callback(){
     header('Content-type:application/json;  charset=utf-8');
 
     $method = '';
-    $params = [];
+    $params = array();
 
     if ((isset($_GET['params'])) && (isset($_GET['method'])) && (isset($_GET['params']['signature']))){
         $params = $_GET['params'];
