@@ -12,6 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 ------------------------------------------------------------ */
 add_action('plugins_loaded', 'woocommerce_unitpay', 0);
 function woocommerce_unitpay(){
+    load_plugin_textdomain( 'unitpay', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
+    
     if (!class_exists('WC_Payment_Gateway'))
         return; // if the WC payment gateway class is not available, do nothing
     if(class_exists('WC_UNITPAY'))
@@ -35,7 +37,7 @@ class WC_UNITPAY extends WC_Payment_Gateway{
     $this->public_key = $this->get_option('public_key');
     $this->secret_key = $this->get_option('secret_key');
     $this->title = 'Unitpay';
-    $this->description = 'Оплата платежной системой Unitpay';
+    $this->description = __('Payment system Unitpay', 'unitpay');
 
     // Actions
     add_action('woocommerce_receipt_' . $this->id, array($this, 'receipt_page'));
@@ -51,8 +53,8 @@ class WC_UNITPAY extends WC_Payment_Gateway{
 
 public function admin_options() {
 ?>
-<h3><?php _e('UNITPAY', 'woocommerce'); ?></h3>
-<p><?php _e('Настройка приема электронных платежей Unitpay.', 'woocommerce'); ?></p>
+<h3><?php _e('UNITPAY', 'unitpay'); ?></h3>
+<p><?php _e('Setup payments parameters.', 'unitpay'); ?></p>
 
     <table class="form-table">
 
@@ -68,21 +70,21 @@ public function admin_options() {
 function init_form_fields(){
     $this->form_fields = array(
         'enabled' => array(
-            'title' => __('Включить/Выключить', 'woocommerce'),
+            'title' => __('Enable/Disable', 'unitpay'),
             'type' => 'checkbox',
-            'label' => __('Включен', 'woocommerce'),
+            'label' => __('Enabled', 'unitpay'),
             'default' => 'yes'
         ),
         'public_key' => array(
-            'title' => __('PUBLIC KEY', 'woocommerce'),
+            'title' => __('PUBLIC KEY', 'unitpay'),
             'type' => 'text',
-            'description' => __('Скопируйте PUBLIC KEY со страницы проекта в системе Unitpay', 'woocommerce'),
+            'description' => __('Copy PUBLIC KEY from your account page in unitpay system', 'unitpay'),
             'default' => ''
         ),
         'secret_key' => array(
             'title' => __('SECRET KEY', 'woocommerce'),
             'type' => 'text',
-            'description' => __('Скопируйте SECRET KEY со страницы проекта в системе Unitpay', 'woocommerce'),
+            'description' => __('Copy SECRET KEY from your account page in unitpay system', 'unitpay'),
             'default' => ''
         )
 
@@ -97,15 +99,15 @@ public function generate_form($order_id){
 
     $sum = number_format($order->order_total, 2, '.', '');
     $account = $order_id;
-    $desc = 'Оплата по заказу №' . $order_id;
+    $desc = __('Payment for Order №', 'unitpay') . $order_id;
 
     return
         '<form action="https://unitpay.ru/pay/' . $this->public_key . '" method="POST" id="unitpay_form">'.
         '<input type="hidden" name="sum" value="' . $sum . '" />'.
         '<input type="hidden" name="account" value="' . $account . '" />'.
         '<input type="hidden" name="desc" value="' . $desc . '" />'.
-        '<input type="submit" class="button alt" id="submit_unitpay_form" value="'.__('Оплатить', 'woocommerce').'" />
-			 <a class="button cancel" href="'.$order->get_cancel_order_url().'">'.__('Отказаться от оплаты и вернуться в корзину', 'woocommerce').'</a>'."\n".
+        '<input type="submit" class="button alt" id="submit_unitpay_form" value="'.__('Pay', 'unitpay').'" />
+			 <a class="button cancel" href="'.$order->get_cancel_order_url().'">'.__('Cancel payment and return back to card', 'unitpay').'</a>'."\n".
         '</form>';
 }
 
@@ -122,7 +124,7 @@ function process_payment($order_id){
 }
 
 function receipt_page($order){
-    echo '<p>'.__('Спасибо за Ваш заказ, пожалуйста, нажмите кнопку ниже, чтобы заплатить.', 'woocommerce').'</p>';
+    echo '<p>'.__('Thank you for your order, press button to pay.', 'unitpay').'</p>';
     echo $this->generate_form($order);
 }
 
@@ -163,13 +165,13 @@ function callback(){
                 break;
             default:
                 $result = array('error' =>
-                    array('message' => 'неверный метод')
+                    array('message' => __('Wrong method', 'unitpay'))
                 );
                 break;
         }
     }else{
         $result = array('error' =>
-            array('message' => 'неверная сигнатура')
+            array('message' => __('Wrong signature', 'unitpay'))
         );
     }
 
@@ -198,7 +200,7 @@ function callback(){
 
         if (!$order->id){
             $result = array('error' =>
-                array('message' => 'заказа не существует')
+                array('message' => __('Order not created', 'unitpay'))
             );
         }else{
 
@@ -207,16 +209,16 @@ function callback(){
 
             if ((float)$sum != (float)$params['orderSum']) {
                 $result = array('error' =>
-                    array('message' => 'не совпадает сумма заказа')
+                    array('message' => __('Wrong order sum', 'unitpay'))
                 );
             }elseif ($currency != $params['orderCurrency']) {
                 $result = array('error' =>
-                    array('message' => 'не совпадает валюта заказа')
+                    array('message' => __('Wrong order currency', 'unitpay'))
                 );
             }
             else{
                 $result = array('result' =>
-                    array('message' => 'Запрос успешно обработан')
+                    array('message' => __('Request successfully', 'unitpay'))
                 );
             }
         }
@@ -231,7 +233,7 @@ function callback(){
 
         if (!$order->id){
             $result = array('error' =>
-                array('message' => 'заказа не существует')
+                array('message' => __('Order not created', 'unitpay'))
             );
         }else{
 
@@ -240,11 +242,11 @@ function callback(){
 
             if ((float)$sum != (float)$params['orderSum']) {
                 $result = array('error' =>
-                    array('message' => 'не совпадает сумма заказа')
+                    array('message' => __('Wrong order sum', 'unitpay'))
                 );
             }elseif ($currency != $params['orderCurrency']) {
                 $result = array('error' =>
-                    array('message' => 'не совпадает валюта заказа')
+                    array('message' => __('Wrong order currency', 'unitpay'))
                 );
             }
             else{
@@ -252,7 +254,7 @@ function callback(){
                 $order->payment_complete();
 
                 $result = array('result' =>
-                    array('message' => 'Запрос успешно обработан')
+                    array('message' => __('Request successfully', 'unitpay'))
                 );
             }
         }
@@ -266,13 +268,13 @@ function callback(){
 
         if (!$order){
             $result = array('error' =>
-                array('message' => 'заказа не существует')
+                array('message' => __('Order not created', 'unitpay'))
             );
         }
         else{
-            $order->update_status('failed', __('Платеж не оплачен', 'woocommerce'));
+            $order->update_status('failed', __('Payment error', 'unitpay'));
             $result = array('result' =>
-                array('message' => 'Запрос успешно обработан')
+                array('message' => __('Request successfully', 'unitpay'))
             );
         }
         return $result;

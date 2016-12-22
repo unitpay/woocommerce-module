@@ -1,0 +1,99 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2016-12-22 17:42+0300\n"
+"PO-Revision-Date: 2016-12-22 17:42+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: unitpay.php\n"
+
+#: unitpay.php:38
+msgid "Payment system Unitpay"
+msgstr "Оплата платежной системой Unitpay"
+
+#: unitpay.php:54
+msgid "UNITPAY"
+msgstr "UNITPAY"
+
+#: unitpay.php:55
+msgid "Setup payments parameters."
+msgstr "Настройка приема электронных платежей Unitpay."
+
+#: unitpay.php:71
+msgid "Enable/Disable"
+msgstr "Включить/Выключить"
+
+#: unitpay.php:73
+msgid "Enabled"
+msgstr "Включен"
+
+#: unitpay.php:77
+msgid "PUBLIC KEY"
+msgstr "PUBLIC KEY"
+
+#: unitpay.php:79
+msgid "Copy PUBLIC KEY from your account page in unitpay system"
+msgstr "Скопируйте PUBLIC KEY со страницы проекта в системе Unitpay"
+
+#: unitpay.php:83
+msgid "SECRET KEY"
+msgstr "SECRET KEY"
+
+#: unitpay.php:85
+msgid "Copy SECRET KEY from your account page in unitpay system"
+msgstr "Скопируйте SECRET KEY со страницы проекта в системе Unitpay"
+
+#: unitpay.php:100
+msgid "Payment for Order №"
+msgstr "Оплата по заказу №"
+
+#: unitpay.php:107
+msgid "Pay"
+msgstr "Оплатить"
+
+#: unitpay.php:108
+msgid "Cancel payment and return back to card"
+msgstr "Отказаться от оплаты и вернуться в корзину"
+
+#: unitpay.php:125
+msgid "Thank you for your order, press button to pay."
+msgstr ""
+"Спасибо за Ваш заказ, пожалуйста, нажмите кнопку ниже, чтобы заплатить."
+
+#: unitpay.php:166
+msgid "Wrong method"
+msgstr "Неверный метод"
+
+#: unitpay.php:172
+msgid "Wrong signature"
+msgstr "Неверная сигнатура"
+
+#: unitpay.php:201 unitpay.php:234 unitpay.php:269
+msgid "Order not created"
+msgstr "Заказа не существует"
+
+#: unitpay.php:210 unitpay.php:243
+msgid "Wrong order sum"
+msgstr "Не совпадает сумма заказа"
+
+#: unitpay.php:214 unitpay.php:247
+msgid "Wrong order currency"
+msgstr "Не совпадает валюта заказа"
+
+#: unitpay.php:219 unitpay.php:255 unitpay.php:275
+msgid "Request successfully"
+msgstr "Запрос успешно обработан"
+
+#: unitpay.php:273
+msgid "Payment error"
+msgstr "Ошибка оплаты"
