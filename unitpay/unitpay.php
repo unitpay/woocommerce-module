@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 add_action('plugins_loaded', 'woocommerce_unitpay', 0);
 function woocommerce_unitpay(){
     load_plugin_textdomain( 'unitpay', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
-    
+
     if (!class_exists('WC_Payment_Gateway'))
         return; // if the WC payment gateway class is not available, do nothing
     if(class_exists('WC_UNITPAY'))
@@ -100,12 +100,14 @@ public function generate_form($order_id){
     $sum = number_format($order->order_total, 2, '.', '');
     $account = $order_id;
     $desc = __('Payment for Order №', 'unitpay') . $order_id;
+    $currency = $order->get_order_currency();
 
     return
         '<form action="https://unitpay.ru/pay/' . $this->public_key . '" method="POST" id="unitpay_form">'.
         '<input type="hidden" name="sum" value="' . $sum . '" />'.
         '<input type="hidden" name="account" value="' . $account . '" />'.
         '<input type="hidden" name="desc" value="' . $desc . '" />'.
+        '<input type="hidden" name="currency" value="' . $currency . '" />'.
         '<input type="submit" class="button alt" id="submit_unitpay_form" value="'.__('Pay', 'unitpay').'" />
 			 <a class="button cancel" href="'.$order->get_cancel_order_url().'">'.__('Cancel payment and return back to card', 'unitpay').'</a>'."\n".
         '</form>';
