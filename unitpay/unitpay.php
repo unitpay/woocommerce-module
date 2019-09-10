@@ -103,6 +103,13 @@ function woocommerce_unitpay(){
             $currency = $order->get_order_currency();
             $cur_locale = get_locale();
             $locale = $cur_locale == 'ru_RU'?'ru':'en';
+            $signature = hash('sha256', join('{up}', array(
+                $account,
+                $currency,
+                $desc,
+                $sum,
+                $this->secret_key
+            )));
 
             return
                 '<form action="https://unitpay.ru/pay/' . $this->public_key . '" method="POST" id="unitpay_form">'.
@@ -111,6 +118,7 @@ function woocommerce_unitpay(){
                 '<input type="hidden" name="desc" value="' . $desc . '" />'.
                 '<input type="hidden" name="currency" value="' . $currency . '" />'.
                 '<input type="hidden" name="locale" value="' . $locale . '" />'.
+                '<input type="hidden" name="signature" value="' . $signature . '" />'.
                 '<input type="submit" class="button alt" id="submit_unitpay_form" value="'.__('Pay', 'unitpay').'" />
 			 <a class="button cancel" href="'.$order->get_cancel_order_url().'">'.__('Cancel payment and return back to card', 'unitpay').'</a>'."\n".
                 '</form>';
