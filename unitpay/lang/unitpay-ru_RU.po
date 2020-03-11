@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2016-12-22 17:42+0300\n"
-"PO-Revision-Date: 2016-12-22 17:42+0300\n"
+"POT-Creation-Date: 2020-03-11 15:37+0300\n"
+"PO-Revision-Date: 2020-03-11 15:37+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.3\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
@@ -17,83 +17,91 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-SearchPath-0: unitpay.php\n"
 
-#: unitpay.php:38
+#: unitpay.php:41
 msgid "Payment system Unitpay"
 msgstr "Оплата платежной системой Unitpay"
 
-#: unitpay.php:54
+#: unitpay.php:57
 msgid "UNITPAY"
 msgstr "UNITPAY"
 
-#: unitpay.php:55
+#: unitpay.php:58
 msgid "Setup payments parameters."
 msgstr "Настройка приема электронных платежей Unitpay."
 
-#: unitpay.php:71
+#: unitpay.php:74
 msgid "Enable/Disable"
 msgstr "Включить/Выключить"
 
-#: unitpay.php:73
+#: unitpay.php:76
 msgid "Enabled"
 msgstr "Включен"
 
-#: unitpay.php:77
+#: unitpay.php:80
+msgid "DOMAIN"
+msgstr "DOMAIN"
+
+#: unitpay.php:82
+msgid "Insert your working DOMAIN"
+msgstr "Вставьте ваш рабочий домен"
+
+#: unitpay.php:86
 msgid "PUBLIC KEY"
 msgstr "PUBLIC KEY"
 
-#: unitpay.php:79
+#: unitpay.php:88
 msgid "Copy PUBLIC KEY from your account page in unitpay system"
 msgstr "Скопируйте PUBLIC KEY со страницы проекта в системе Unitpay"
 
-#: unitpay.php:83
+#: unitpay.php:92
 msgid "SECRET KEY"
 msgstr "SECRET KEY"
 
-#: unitpay.php:85
+#: unitpay.php:94
 msgid "Copy SECRET KEY from your account page in unitpay system"
 msgstr "Скопируйте SECRET KEY со страницы проекта в системе Unitpay"
 
-#: unitpay.php:100
+#: unitpay.php:109
 msgid "Payment for Order №"
 msgstr "Оплата по заказу №"
 
-#: unitpay.php:107
+#: unitpay.php:129
 msgid "Pay"
 msgstr "Оплатить"
 
-#: unitpay.php:108
+#: unitpay.php:130
 msgid "Cancel payment and return back to card"
 msgstr "Отказаться от оплаты и вернуться в корзину"
 
-#: unitpay.php:125
+#: unitpay.php:147
 msgid "Thank you for your order, press button to pay."
 msgstr ""
 "Спасибо за Ваш заказ, пожалуйста, нажмите кнопку ниже, чтобы заплатить."
 
-#: unitpay.php:166
+#: unitpay.php:188
 msgid "Wrong method"
 msgstr "Неверный метод"
 
-#: unitpay.php:172
+#: unitpay.php:194
 msgid "Wrong signature"
 msgstr "Неверная сигнатура"
 
-#: unitpay.php:201 unitpay.php:234 unitpay.php:269
+#: unitpay.php:223 unitpay.php:256 unitpay.php:291
 msgid "Order not created"
 msgstr "Заказа не существует"
 
-#: unitpay.php:210 unitpay.php:243
+#: unitpay.php:232 unitpay.php:265
 msgid "Wrong order sum"
 msgstr "Не совпадает сумма заказа"
 
-#: unitpay.php:214 unitpay.php:247
+#: unitpay.php:236 unitpay.php:269
 msgid "Wrong order currency"
 msgstr "Не совпадает валюта заказа"
 
-#: unitpay.php:219 unitpay.php:255 unitpay.php:275
+#: unitpay.php:241 unitpay.php:277 unitpay.php:297
 msgid "Request successfully"
 msgstr "Запрос успешно обработан"
 
-#: unitpay.php:273
+#: unitpay.php:295
 msgid "Payment error"
 msgstr "Ошибка оплаты"
