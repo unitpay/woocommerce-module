@@ -34,6 +34,7 @@ function woocommerce_unitpay(){
             $this->init_settings();
 
             // Define user set variables
+            $this->domain = $this->get_option('domain');
             $this->public_key = $this->get_option('public_key');
             $this->secret_key = $this->get_option('secret_key');
             $this->title = 'Unitpay';
@@ -75,6 +76,12 @@ function woocommerce_unitpay(){
                     'label' => __('Enabled', 'unitpay'),
                     'default' => 'yes'
                 ),
+                'domain' => array(
+                    'title' => __('DOMAIN', 'unitpay'),
+                    'type' => 'text',
+                    'description' => __('Insert your working DOMAIN', 'unitpay'),
+                    'default' => ''
+                ),
                 'public_key' => array(
                     'title' => __('PUBLIC KEY', 'unitpay'),
                     'type' => 'text',
@@ -112,7 +119,7 @@ function woocommerce_unitpay(){
             )));
 
             return
-                '<form action="https://unitpay.ru/pay/' . $this->public_key . '" method="POST" id="unitpay_form">'.
+                '<form action="https://' . $this->domain . '/pay/' . $this->public_key . '" method="POST" id="unitpay_form">'.
                 '<input type="hidden" name="sum" value="' . $sum . '" />'.
                 '<input type="hidden" name="account" value="' . $account . '" />'.
                 '<input type="hidden" name="desc" value="' . $desc . '" />'.
