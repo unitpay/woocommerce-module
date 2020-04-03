@@ -1,10 +1,8 @@
 <?php
 /*
   Plugin Name: Unitpay
-  Plugin URI:  http://unitpay.ru/
   Description: Unitpay Plugin for WooCommerce
   Version: 1.0.1
-  Author: unitpay.ru
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
