@@ -116,17 +116,29 @@ function woocommerce_unitpay(){
                 $this->secret_key
             )));
 
-            return
+            $form =
                 '<form action="https://' . $this->domain . '/pay/' . $this->public_key . '" method="POST" id="unitpay_form">'.
                 '<input type="hidden" name="sum" value="' . $sum . '" />'.
                 '<input type="hidden" name="account" value="' . $account . '" />'.
                 '<input type="hidden" name="desc" value="' . $desc . '" />'.
                 '<input type="hidden" name="currency" value="' . $currency . '" />'.
                 '<input type="hidden" name="locale" value="' . $locale . '" />'.
-                '<input type="hidden" name="signature" value="' . $signature . '" />'.
+                '<input type="hidden" name="signature" value="' . $signature . '" />';
+
+            if ($order->billing_email) {
+                $form .= '<input type="hidden" name="customerEmail" value="' . $order->billing_email . '" />';
+            }
+
+            if ($order->billing_phone) {
+                $form .= '<input type="hidden" name="customerPhone" value="' . $order->billing_phone . '" />';
+            }
+
+            $form .=
                 '<input type="submit" class="button alt" id="submit_unitpay_form" value="'.__('Pay', 'unitpay').'" />
 			 <a class="button cancel" href="'.$order->get_cancel_order_url().'">'.__('Cancel payment and return back to card', 'unitpay').'</a>'."\n".
                 '</form>';
+
+            return $form;
         }
 
         /**
