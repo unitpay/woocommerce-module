@@ -2,7 +2,7 @@
 /*
   Plugin Name: Unitpay
   Description: Unitpay Plugin for WooCommerce
-  Version: 1.0.1
+  Version: 2.1.1
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
@@ -130,7 +130,7 @@ function woocommerce_unitpay(){
             }
 
             if ($order->billing_phone) {
-                $form .= '<input type="hidden" name="customerPhone" value="' . $order->billing_phone . '" />';
+                $form .= '<input type="hidden" name="customerPhone" value="' . preg_replace('/\D/', '', $order->billing_phone) . '" />';
             }
 
             $form .=
@@ -180,7 +180,6 @@ function woocommerce_unitpay(){
                 $status_sign = false;
             }
 
-//    $status_sign = true;
 
             if ($status_sign){
                 switch ($method) {
