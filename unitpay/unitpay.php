@@ -46,7 +46,6 @@ function woocommerce_unitpay()
             $this->secret_key = $this->get_option('secret_key');
             $this->nds = $this->get_option('nds');
             $this->nds_delivery = $this->get_option('nds_delivery');
-            $this->nom = $this->get_option('nom');
 
             $this->title = 'Unitpay';
             $this->description = __('Payment system Unitpay', 'unitpay');
@@ -137,13 +136,7 @@ function woocommerce_unitpay()
                         'vat10' => __('НДС 10%', 'woocommerce'),
                         'vat0' => __('НДС 0%', 'woocommerce'),
                     ),
-                ),
-                'nom' => array(
-                    'title' => __('Номенклатура', 'woocommerce'),
-                    'type' => 'text',
-                    'description' => __('Маркировка товара', 'unitpay'),
-                    'default' => ''
-                ),
+                )
             );
         }
 
@@ -184,8 +177,6 @@ function woocommerce_unitpay()
             foreach ($order->get_items() as $item) {
                 $product = $order->get_product_from_item($item);
 
-                $nom = $product->get_attribute('pa_' . $this->nom);
-
                 $itemData = array(
                     'name' => $item['name'],
                     'count' => $item['quantity'],
@@ -196,10 +187,6 @@ function woocommerce_unitpay()
                     'nds' => $this->nds,
                     'type' => "commodity",
                 );
-
-                if ($nom) {
-                    $itemData['nomenclatureCode'] = $nom;
-                }
 
                 $items[] = $itemData;
             }
