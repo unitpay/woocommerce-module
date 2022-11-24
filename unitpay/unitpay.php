@@ -48,7 +48,7 @@ function woocommerce_unitpay()
             $this->nds_delivery = $this->get_option('nds_delivery');
 
             $this->title = 'Unitpay';
-            $this->description = __('Payment system Unitpay', 'unitpay');
+            $this->description = __('Payment by Unitpay (Bank cards and other payment methods)', 'unitpay');
 
             // Actions
             add_action('woocommerce_receipt_' . $this->id, array($this, 'receipt_page'));
