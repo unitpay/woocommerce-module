@@ -18,8 +18,8 @@ msgstr ""
 "X-Poedit-SearchPath-0: unitpay.php\n"
 
 #: unitpay.php:41
-msgid "Payment system Unitpay"
-msgstr "Оплата платежной системой Unitpay"
+msgid "Payment by Unitpay (Bank cards and other payment methods)"
+msgstr "Оплата Unitpay (Банковские карты и другие методы оплаты)"
 
 #: unitpay.php:57
 msgid "UNITPAY"
